@@ -1,7 +1,11 @@
-# autossh
+# camptocamp/autossh
 
-[![Docker](https://badgen.net/badge/jnovack/autossh/blue?icon=docker)](https://hub.docker.com/r/jnovack/autossh)
-[![Github](https://badgen.net/badge/jnovack/autossh/purple?icon=github)](https://github.com/jnovack/autossh)
+This is a fork from https://github.com/jnovack/autossh
+
+
+# jnovack/autossh
+
+
 
 Highly customizable AutoSSH docker container.
 

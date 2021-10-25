@@ -1,3 +1,9 @@
+# camptocamp/autossh
+
+## v2.0.1+c2c-v1
+
+Add support for configuration of ssh keys from environment variables. 
+
 # jnovack/autossh
 
 ## v2.0.0
