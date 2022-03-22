@@ -1,6 +1,6 @@
 # camptocamp/autossh
 
-This is a fork from https://github.com/jnovack/autossh
+This is a fork from https://github.com/jnovack/autossh to add ssh file by env variable support
 
 
 # jnovack/autossh
