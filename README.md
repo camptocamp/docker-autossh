@@ -163,6 +163,11 @@ Specify the address (ip preferred) of the *remote* endpoint. (Default:
 
 Specify the `ssh` port the *remote* endpoint to connect. (Default: `22`)
 
+#### EXITONFORWARDFAILURE
+
+Specify if autossh must abord on forward failure, set to 'no' for debug. (Default: `yes`)
+
+
 #### SSH_TUNNEL_PORT
 
 Specify the port number on the *remote* endpoint which will serve as the
