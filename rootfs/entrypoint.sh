@@ -68,6 +68,7 @@ echo "[INFO ] # ${COMMAND}"
 
 if [ -n "${AUTOSSH_DEBUG}" ]; then
     echo "[DEBUG] on autossh not started automatically"
+    exec /bin/sh
 else
     exec ${COMMAND}
 fi
