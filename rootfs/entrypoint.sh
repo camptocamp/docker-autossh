@@ -66,5 +66,8 @@ COMMAND="autossh "\
 
 echo "[INFO ] # ${COMMAND}"
 
-# Run command
-exec ${COMMAND}
+if [ -n "${AUTOSSH_DEBUG}" ]; then
+    echo "[DEBUG] on autossh not started automatically"
+else
+    exec ${COMMAND}
+fi
