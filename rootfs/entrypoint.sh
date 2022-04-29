@@ -57,7 +57,7 @@ COMMAND="autossh "\
 "-o StrictHostKeyChecking=${STRICT_HOSTS_KEY_CHECKING} ${KNOWN_HOSTS_ARG:=}"\
 "-o ServerAliveInterval=${SSH_SERVER_ALIVE_INTERVAL:-10} "\
 "-o ServerAliveCountMax=${SSH_SERVER_ALIVE_COUNT_MAX:-3} "\
-"-o ExitOnForwardFailure=yes "\
+"-o ExitOnForwardFailure=${EXITONFORWARDFAILURE:=yes} "\
 "-t -t "\
 "${SSH_MODE:=-R} ${SSH_BIND_IP}:${SSH_TUNNEL_PORT}:${SSH_TARGET_HOST}:${SSH_TARGET_PORT} "\
 "-p ${SSH_REMOTE_PORT:=22} "\
