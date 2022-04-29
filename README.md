@@ -1,6 +1,6 @@
 # camptocamp/autossh
 
-This is a fork from https://github.com/jnovack/autossh
+This is a fork from https://github.com/jnovack/autossh to add ssh file by env variable support
 
 
 # jnovack/autossh
@@ -162,6 +162,11 @@ Specify the address (ip preferred) of the *remote* endpoint. (Default:
 #### SSH_REMOTE_PORT
 
 Specify the `ssh` port the *remote* endpoint to connect. (Default: `22`)
+
+#### EXITONFORWARDFAILURE
+
+Specify if autossh must abord on forward failure, set to 'no' for debug. (Default: `yes`)
+
 
 #### SSH_TUNNEL_PORT
 

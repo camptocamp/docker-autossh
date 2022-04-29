@@ -30,9 +30,9 @@ fi
 
 # Add entry to /etc/passwd if we are running non-root
 if [[ $(id -u) != "0" ]]; then
-  USER="autossh:x:$(id -u):$(id -g):autossh:/tmp:/bin/sh"
-  echo "[INFO ] Creating non-root-user = $USER"
-  echo "$USER" >> /etc/passwd
+    USER="autossh:x:$(id -u):$(id -g):autossh:/tmp:/bin/sh"
+    echo "[INFO ] Creating non-root-user = $USER"
+    echo "$USER" >>/etc/passwd
 fi
 
 if [ ! -z "${SSH_BIND_IP}" ] && [ "${SSH_MODE}" = "-R" ]; then
@@ -48,8 +48,8 @@ let "DEFAULT_PORT += 32768"
 # Log to stdout
 echo "[INFO ] Using $(autossh -V)"
 echo "[INFO ] Tunneling ${SSH_BIND_IP:=127.0.0.1}:${SSH_TUNNEL_PORT:=${DEFAULT_PORT}}" \
-     " on ${SSH_REMOTE_USER:=root}@${SSH_REMOTE_HOST:=localhost}:${SSH_REMOTE_PORT}" \
-     " to ${SSH_TARGET_HOST=localhost}:${SSH_TARGET_PORT:=22}"
+    " on ${SSH_REMOTE_USER:=root}@${SSH_REMOTE_HOST:=localhost}:${SSH_REMOTE_PORT}" \
+    " to ${SSH_TARGET_HOST=localhost}:${SSH_TARGET_PORT:=22}"
 
 COMMAND="autossh "\
 "-M 0 "\
