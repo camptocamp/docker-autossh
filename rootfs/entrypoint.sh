@@ -30,9 +30,9 @@ fi
 
 # Add entry to /etc/passwd if we are running non-root
 if [[ $(id -u) != "0" ]]; then
-  USER="autossh:x:$(id -u):$(id -g):autossh:/tmp:/bin/sh"
-  echo "[INFO ] Creating non-root-user = $USER"
-  echo "$USER" >> /etc/passwd
+    USER="autossh:x:$(id -u):$(id -g):autossh:/tmp:/bin/sh"
+    echo "[INFO ] Creating non-root-user = $USER"
+    echo "$USER" >>/etc/passwd
 fi
 
 if [ ! -z "${SSH_BIND_IP}" ] && [ "${SSH_MODE}" = "-R" ]; then
@@ -48,20 +48,20 @@ let "DEFAULT_PORT += 32768"
 # Log to stdout
 echo "[INFO ] Using $(autossh -V)"
 echo "[INFO ] Tunneling ${SSH_BIND_IP:=127.0.0.1}:${SSH_TUNNEL_PORT:=${DEFAULT_PORT}}" \
-     " on ${SSH_REMOTE_USER:=root}@${SSH_REMOTE_HOST:=localhost}:${SSH_REMOTE_PORT}" \
-     " to ${SSH_TARGET_HOST=localhost}:${SSH_TARGET_PORT:=22}"
+    " on ${SSH_REMOTE_USER:=root}@${SSH_REMOTE_HOST:=localhost}:${SSH_REMOTE_PORT}" \
+    " to ${SSH_TARGET_HOST=localhost}:${SSH_TARGET_PORT:=22}"
 
-COMMAND="autossh "\
-"-M 0 "\
-"-N "\
-"-o StrictHostKeyChecking=${STRICT_HOSTS_KEY_CHECKING} ${KNOWN_HOSTS_ARG:=}"\
-"-o ServerAliveInterval=${SSH_SERVER_ALIVE_INTERVAL:-10} "\
-"-o ServerAliveCountMax=${SSH_SERVER_ALIVE_COUNT_MAX:-3} "\
-"-o ExitOnForwardFailure=yes "\
-"-t -t "\
-"${SSH_MODE:=-R} ${SSH_BIND_IP}:${SSH_TUNNEL_PORT}:${SSH_TARGET_HOST}:${SSH_TARGET_PORT} "\
-"-p ${SSH_REMOTE_PORT:=22} "\
-"${SSH_REMOTE_USER}@${SSH_REMOTE_HOST}"
+COMMAND="autossh " \
+    "-M 0 " \
+    "-N " \
+    "-o StrictHostKeyChecking=${STRICT_HOSTS_KEY_CHECKING} ${KNOWN_HOSTS_ARG:=}" \
+    "-o ServerAliveInterval=${SSH_SERVER_ALIVE_INTERVAL:-10} " \
+    "-o ServerAliveCountMax=${SSH_SERVER_ALIVE_COUNT_MAX:-3} " \
+    "-o ExitOnForwardFailure=${EXITONFORWARDFAILURE:=yes} " \
+    "-t -t " \
+    "${SSH_MODE:=-R} ${SSH_BIND_IP}:${SSH_TUNNEL_PORT}:${SSH_TARGET_HOST}:${SSH_TARGET_PORT} " \
+    "-p ${SSH_REMOTE_PORT:=22} " \
+    "${SSH_REMOTE_USER}@${SSH_REMOTE_HOST}"
 
 echo "[INFO ] # ${COMMAND}"
 
